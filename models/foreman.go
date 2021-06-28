@@ -200,9 +200,15 @@ func (fm *FM_Hosts) ToRD_Hosts() (result map[string]RD_Hosts, err error) {
 		osUser = "root";
 	}
 	for _, v := range fm.Hosts.Edges {
+		var ip string;
+		if len(v.Node.Ip) > 0 {
+			ip = string(v.Node.Ip)
+		} else { 
+			ip = string(v.Node.Name)
+		}
 		var rd = RD_Hosts{
 			Nodename:    string(v.Node.Name),
-			Hostname:    string(v.Node.Ip),
+			Hostname:    ip,
 			OsFamily:    string(v.Node.Operatingsystem.Type),
 			OsName:      string(v.Node.Operatingsystem.Name),
 			OsVersion:   string(v.Node.Operatingsystem.Major),
