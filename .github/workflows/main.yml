@@ -39,3 +39,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: Fishwaldo/foreman-gateway:latest
+          registry: ghcr.io
+          username: "Fishwaldo"
+          password: ${{ secrets.PAT }}
