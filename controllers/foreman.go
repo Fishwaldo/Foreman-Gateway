@@ -60,7 +60,7 @@ func (o *ForemanController) GetAll() {
 		o.Abort("500")
 	} else { 
 		str, _ := q.ToRD_Hosts();
-		o.Data["json"] = str
+		o.Data["json"] = str;
 		o.ServeJSON()
 	}
 }

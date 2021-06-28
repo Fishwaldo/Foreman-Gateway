@@ -6,12 +6,12 @@ import (
 	"errors"
 
 	"net/http"
-	"time"
 	"net/url"
+	"time"
 
 	"github.com/beego/beego/v2/client/cache"
-	"github.com/beego/beego/v2/core/logs"
 	"github.com/beego/beego/v2/core/config"
+	"github.com/beego/beego/v2/core/logs"
 	"github.com/shurcooL/graphql"
 )
 
@@ -100,16 +100,16 @@ type FM_HostGroup struct {
 }
 
 type RD_Hosts struct {
-	HostGroups  []string `json:hostgroups`
-	Location	string `json:location`
-	OsFamily    string `json:osFamily`
-	Username    string `json:username`
-	OsVersion   string `json:osVersion`
-	OsArch      string `json:osArch`
-	Description string `json:description`
-	Hostname    string `json:hostname`
-	Nodename    string `json:-`
-	OsName      string `json:osName`
+	HostGroups  []string `json:"tags"`
+	Location	string `json:"location"`
+	OsFamily    string `json:"osFamily"`
+	Username    string `json:"username"`
+	OsVersion   string `json:"osVersion"`
+	OsArch      string `json:"osArch"`
+	Description string `json:"description"`
+	Hostname    string `json:"hostname"`
+	Nodename    string `json:"-"`
+	OsName      string `json:"osName"`
 }
 
 func GetHosts() (fm FM_Hosts, err error) {
@@ -214,7 +214,7 @@ func (fm *FM_Hosts) ToRD_Hosts() (result map[string]RD_Hosts, err error) {
 		if tags, err := fm.getHostGroupsTag(v.Node.Id); err == nil {
 			rd.HostGroups = tags;
 		}
-		ret[string(v.Node.Name)] = rd
+		ret[string(v.Node.Name)] = rd;
 	}
 	return ret, nil
 }
