@@ -1,7 +1,7 @@
 FROM library/golang
 
 # Godep for vendoring
-RUN go install github.com/tools/godep
+RUN go install github.com/tools/godep@latest
 
 # Recompile the standard library without CGO
 RUN CGO_ENABLED=0 go install -a std
