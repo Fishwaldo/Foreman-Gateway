@@ -134,6 +134,10 @@ func (fm *FM_Hosts) getHostGroupsTag(id graphql.ID) (result []string, err error)
 		if v.Node.Id != id {
 			continue
 		}
+		if v.Node.Hostgroup.ID == nil {
+			logs.Info("Host Has No Hostgroup: %+v\n",v.Node)
+			continue
+		}
 		hgid := v.Node.Hostgroup.ID.(string);
 		for {
 			var val string;
