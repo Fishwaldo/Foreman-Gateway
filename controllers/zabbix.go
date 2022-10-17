@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+	"strings"
 
 	"github.com/beego/beego/v2/core/config"
 	"github.com/beego/beego/v2/core/logs"
@@ -55,8 +56,8 @@ func (o *ZabbixController) GetAll() {
 			o.Abort("500")
 		}
 		fmt.Printf("%+v", rss)
-		o.Ctx.ResponseWriter.Header().Set("Content-Type", "application/rss+xml")
-		o.Ctx.WriteString(rss)
+		o.Ctx.ResponseWriter.Header().Set("Content-Type", "application/xml")
+		o.Ctx.WriteString(strings.TrimPrefix(rss, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
 //		o.Resp(rss)
 
 	}
