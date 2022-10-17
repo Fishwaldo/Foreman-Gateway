@@ -16,4 +16,13 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["Foreman-Gateway/controllers:ZabbixController"] = append(beego.GlobalControllerRouter["Foreman-Gateway/controllers:ZabbixController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+    
 }

@@ -20,6 +20,11 @@ func init() {
 				&controllers.ForemanController{},
 			),
 		),
+		beego.NSNamespace("/zabbix/problems",
+			beego.NSInclude(
+				&controllers.ZabbixController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
