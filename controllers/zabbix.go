@@ -55,7 +55,6 @@ func (o *ZabbixController) GetAll() {
 			o.Data["content"] = "Failed to Generate RSS";
 			o.Abort("500")
 		}
-		fmt.Printf("%+v", rss)
 		o.Ctx.ResponseWriter.Header().Set("Content-Type", "application/xml")
 		o.Ctx.WriteString(strings.TrimPrefix(rss, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
 //		o.Resp(rss)
